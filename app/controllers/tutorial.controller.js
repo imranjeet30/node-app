@@ -18,7 +18,7 @@ exports.create = async (req, res) => {
 		}
 
 		const result = await Tutorial.create(req.body);
-		res.send({ data: validate(req.body) });
+		res.send({ data: result });
 	} catch (err) {
 		res.send({ error: err.message });
 	}
