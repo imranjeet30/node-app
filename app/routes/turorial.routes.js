@@ -1,3 +1,5 @@
+const authJwt = require("../middlewares/authJwt");
+
 module.exports = (app) => {
 	const tutorial = require("../controllers/tutorial.controller");
 
@@ -9,5 +11,5 @@ module.exports = (app) => {
 	router.put("/", tutorial.update);
 	router.get("/published/:isPublished", tutorial.getPublished);
 
-	app.use("/api/tutorials", router);
+	app.use("/api/tutorials", [authJwt.verifyToken], router);
 };
