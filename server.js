@@ -52,6 +52,7 @@ Role.belongsToMany(User, { through: 'userRole' });
 
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/payment.routes")(app);
 
 // Routes
 app.get('/', (req, res) => {
