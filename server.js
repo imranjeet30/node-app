@@ -10,6 +10,7 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 
 const db = require("./app/models");
+const limiter = require("./app/middlewares/rateLimiter");
 const Role = db.role;
 const User = db.user.User;
 
@@ -52,6 +53,8 @@ app.use(cors(corsOptions));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(limiter);
 const server = http.createServer(app);
 
 const io = new Server(server, {

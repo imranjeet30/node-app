@@ -11,5 +11,6 @@ module.exports = (app) => {
 	router.put("/", tutorial.update);
 	router.get("/published/:isPublished", tutorial.getPublished);
 
-	app.use("/api/tutorials", [authJwt.verifyToken], router);
+	// app.use("/api/tutorials", [authJwt.verifyToken], router);
+	app.use("/api/tutorials", router);
 };
