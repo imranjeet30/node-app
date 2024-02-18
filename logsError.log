@@ -1,0 +1,46 @@
+{
+  meta: {
+    req: {
+      url: '/error',
+      headers: {
+        'user-agent': 'PostmanRuntime/7.29.4',
+        accept: '*/*',
+        'postman-token': '82c361b7-84ca-4b5c-9675-a47615a17670',
+        host: 'localhost:8081',
+        'accept-encoding': 'gzip, deflate, br',
+        connection: 'keep-alive'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/error',
+      query: {}
+    },
+    res: { statusCode: 500 },
+    responseTime: 3
+  },
+  level: 'error',
+  message: 'HTTP GET /error'
+}
+{
+  meta: {
+    req: {
+      url: '/error',
+      headers: {
+        'user-agent': 'PostmanRuntime/7.29.4',
+        accept: '*/*',
+        'postman-token': '1b82e6c8-8704-4329-a9eb-63ef25818f73',
+        host: 'localhost:8081',
+        'accept-encoding': 'gzip, deflate, br',
+        connection: 'keep-alive'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/error',
+      query: {}
+    },
+    res: { statusCode: 500 },
+    responseTime: 6
+  },
+  level: 'error',
+  message: 'HTTP GET /error'
+}

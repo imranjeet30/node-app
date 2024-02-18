@@ -1,9 +1,11 @@
 require("dotenv").config();
+
 const CHAT_BOT = 'ChatBot';
 let chatRoom = ''; // E.g. javascript, node,...
 let allUsers = [];
 
 const express = require("express");
+const expressWinston = require('express-winston');
 const http = require("http");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -11,6 +13,7 @@ const { Server } = require("socket.io");
 
 const db = require("./app/models");
 const limiter = require("./app/middlewares/rateLimiter");
+const { transports, format } = require("winston");
 const Role = db.role;
 const User = db.user.User;
 
@@ -48,6 +51,35 @@ const port = process.env.PORT;
 const corsOptions = {
 	origin: `http://localhost:${port}`,
 };
+
+app.use(expressWinston.logger({
+	transports:[
+		new transports.Console(),
+		new transports.File({
+			level:'warn ',
+			filename:'logsWarning.log'
+		}),
+		new transports.File({
+			level:'error',
+			filename:'logsError.log'
+		})
+	],
+	format:format.combine(
+		format.json(),
+		format.prettyPrint(),
+		format.timestamp()
+	),
+	statusLevels:true
+}));
+
+app.use(expressWinston.errorLogger({
+	transports:[
+		new transports.File({
+			filename:'logsInternalErrors.log'
+		}),
+	],
+	format:format.timestamp()
+}));
 
 app.use(cors(corsOptions));
 
@@ -100,6 +132,10 @@ Role.belongsToMany(User, { through: "userRole" });
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/payment.routes")(app);
+
+app.get('/error', (req, res) => {
+	throw new Error('This is a custom error');
+})
 
 // Routes
 app.get("/", (req, res) => {
