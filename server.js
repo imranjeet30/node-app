@@ -132,6 +132,7 @@ Role.belongsToMany(User, { through: "userRole" });
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/payment.routes")(app);
+require("./app/routes/dns.routes")(app);
 
 app.get('/error', (req, res) => {
 	throw new Error('This is a custom error');
