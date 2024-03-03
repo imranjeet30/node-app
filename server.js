@@ -139,7 +139,7 @@ app.get('/error', (req, res) => {
 })
 
 app.get('/test', (req, res) => {
-	res.send({message:'This is test  message'});
+	res.send({message:'This is my test  message'});
 });
 
 // Routes
