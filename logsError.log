@@ -44,3 +44,26 @@
   level: 'error',
   message: 'HTTP GET /error'
 }
+{
+  meta: {
+    req: {
+      url: '/error',
+      headers: {
+        'user-agent': 'PostmanRuntime/7.29.4',
+        accept: '*/*',
+        'postman-token': 'e6ab7503-fd67-457f-8cbd-28f91dbf8581',
+        host: 'localhost:8081',
+        'accept-encoding': 'gzip, deflate, br',
+        connection: 'keep-alive'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/error',
+      query: {}
+    },
+    res: { statusCode: 500 },
+    responseTime: 14
+  },
+  level: 'error',
+  message: 'HTTP GET /error'
+}

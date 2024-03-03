@@ -17,15 +17,15 @@ const { transports, format } = require("winston");
 const Role = db.role;
 const User = db.user.User;
 
-db.sequelize
-	.sync()
-	.then(() => {
-		console.log("Synced db.");
-		// initial();
-	})
-	.catch((err) => {
-		console.log("Failed to sync db: " + err.message);
-	});
+// db.sequelize
+// 	.sync()
+// 	.then(() => {
+// 		console.log("Synced db.");
+// 		// initial();
+// 	})
+// 	.catch((err) => {
+// 		console.log("Failed to sync db: " + err.message);
+// 	});
 
 function initial() {
 	Role.create({
@@ -137,6 +137,10 @@ require("./app/routes/dns.routes")(app);
 app.get('/error', (req, res) => {
 	throw new Error('This is a custom error');
 })
+
+app.get('/test', (req, res) => {
+	res.send({message:'This is test  message'});
+});
 
 // Routes
 app.get("/", (req, res) => {
